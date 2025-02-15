@@ -8,12 +8,42 @@
 
 :root {
   --gray3: #8A8A96;
+  --black: #121212;
+  --white: #FBFBFB;
+  --light-green: #28E0A9;
+  --dark-green: #002E26;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  color: var(--black);
+  background-color: var(--white);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input, button, ul, li {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
 }
 
 input, button {
   outline: none;
   border: none;
   background-color: transparent;
+}
+
+button {
+  cursor: pointer;
 }
 
 ul, li {
@@ -26,6 +56,6 @@ ul, li {
 }
 
 svg {
-  min-width: 24px;
-  min-height: 24px;
+  width: 24px;
+  height: 24px;
 }
