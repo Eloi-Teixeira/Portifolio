@@ -1,0 +1,21 @@
+.logo {
+  max-width: 98px;
+}
+
+.header-container {
+  width: 100%;
+  border-bottom: 1px solid var(--gray3);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.header-content ul {
+  display: flex;
+  gap: 30px;
+}
