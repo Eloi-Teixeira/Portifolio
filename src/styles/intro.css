@@ -16,6 +16,7 @@
   font-weight: 600;
   font-family: 'Texturina', serif;
   transform: translateY(10px);
+  color: var(--purple);
 }
 
 .intro-content h1 {

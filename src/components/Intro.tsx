@@ -1,8 +1,7 @@
-import React from 'react'
 import IconGitHub from '../assets/icons/IconGitHub'
 import IconDownload from '../assets/icons/IconDownload'
 import ImgComputer from '../assets/imgs/computer.png'
-// import 
+import Cv from '../assets/cv/cv.pdf';
 
 const Intro = () => {
   return (
@@ -11,13 +10,13 @@ const Intro = () => {
         <span>Elói Teixeira</span>
         <h1>Desenvolvedor <span>Full-Stack</span></h1>
         <div>
-          <a href="#" className='github-link'>
+          <a href="#" className='github-link' target='_blank'>
             <IconGitHub />
           </a>
-          <button className='download-cv'>
+          <a className='download-cv' href={Cv} download>
             Baixar CV
             <IconDownload />
-          </button>
+          </a>
         </div>
       </div>
       <img src={ImgComputer} alt="Imagem de um programador" />
