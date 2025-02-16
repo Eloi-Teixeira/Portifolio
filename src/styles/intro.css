@@ -1,0 +1,146 @@
+.max-container-2.intro-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  margin-block: 120px;
+  padding-inline: 2rem;
+}
+
+.intro-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.intro-content > span {
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-family: 'Texturina', serif;
+  transform: translateY(10px);
+}
+
+.intro-content h1 {
+  font-family: 'Texturina', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 120%;
+}
+
+.intro-content h1 span {
+  color: var(--purple);
+  display: block;
+}
+
+.intro-content div {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.intro-content .github-link {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem;
+  border-radius: 100%;
+  gap: 10px;
+  background-color: var(--black);
+  transition: 0.3s;
+}
+
+.intro-content .github-link:hover {
+  background-color: var(--gray3);
+  box-shadow: 0 0 10px var(--gray3);
+}
+
+.intro-content .download-cv {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  background-color: var(--purple);
+  color: var(--white);
+  transition: all 0.3s;
+  font-weight: 600;
+}
+
+.intro-content .download-cv:hover {
+  background-color: var(--light-green);
+  color: var(--dark-green);
+}
+
+.intro-content .download-cv svg path {
+  stroke: var(--white);
+  transition: all 0.3s;
+}
+
+.intro-content .download-cv:hover svg path {
+  stroke: var(--dark-green);
+}
+
+/**-------------------------------------------------------------------------------------------------
+  - MEDIA QUERIES
+----------------------------------------------------------------------------------------------------*/
+
+@media (max-width: 924px) {
+  .max-container-2.intro-container {
+    margin: 30px auto;
+  }
+
+  .intro-content h1 {
+    font-size: 2rem;
+  }
+
+  .intro-content > span {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .max-container-2.intro-container {
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding-inline: 1rem;
+  }
+
+  .intro-container img {
+    align-self: center;
+    justify-self: center;
+  }
+
+  .intro-content {
+    align-items: center;
+    text-align: center;
+    order: 2;
+  }
+
+  .intro-content h1 span {
+    display: inline;
+  }
+}
+
+@media (max-width: 400px) {
+  .intro-content h1 span {
+    display: block;
+  }
+
+  .intro-content > span {
+    font-size: 0.875rem;
+  }
+
+  .intro-content .download-cv {
+    font-size: 0.875rem;
+    padding: 1rem;
+  }
+
+  .intro-content .download-cv svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .intro-content > div {
+    gap: 15px;
+  }
+}
