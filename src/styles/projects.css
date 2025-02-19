@@ -1,0 +1,120 @@
+.project-container {
+  display: grid;
+  grid-template-columns: auto 2fr;
+  padding: 120px 0;
+  column-gap: 2rem;
+  row-gap: 30px;
+}
+
+.project-container .icon-container {
+  min-width: 250px;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding-top: 40px;
+}
+
+.project-container .icon-container svg {
+  width: 48px;
+  height: 48px;
+  opacity: 0.1;
+  animation: 4s float infinite linear;
+}
+
+.project-container .icon-container svg:nth-child(even) {
+  animation: 8s float infinite linear;
+  justify-self: center;
+}
+
+
+.project-container .icon-container svg:nth-child(2),
+.project-container .icon-container svg:nth-child(5),
+.project-container .icon-container svg:nth-child(6) {
+  animation: 6s float infinite linear;
+}
+
+.project-container .icon-container svg:nth-child(3),
+.project-container .icon-container svg:nth-child(7) {
+  animation: 10s float infinite linear;
+  justify-self: end;
+}
+
+.project-container h2 {
+  grid-column: 1/-1;
+  width: fit-content;
+  font-size: 3rem;
+}
+
+.project-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  gap: 10px;
+}
+
+.project-content .project-box::after {
+  content: '';
+  position: absolute;
+  width: 80%;
+  height: 1px;
+  background-color: var(--gray2);
+  display: flex;
+  bottom: -15px;
+  align-self: center;
+  left: 10%;
+}
+
+.project-content .project-box:last-child::after {
+  display: none;
+}
+
+/*----------------------------------------------------------------------------------------------------------
+  - ANIMAÇÕES
+-----------------------------------------------------------------------------------------------------------*/
+
+@keyframes float {
+  0% {
+    transform: initial;
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+  100% {
+    transform: initial;
+  }
+}
+
+/*--------------------------------------------------------------------------------------------------------
+  -  MEDIA QUERIES
+--------------------------------------------------------------------------------------------------------*/
+
+@media (max-width: 1024px) {
+  .project-container {
+    grid-template-columns: 1fr;
+    padding: 120px 1rem;
+  }
+  .project-container .icon-container {
+    display: none;
+  }
+  .project-content {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .project-content .project-box {
+    grid-template-columns: 1fr;
+
+  }
+}
+
+@media (max-width: 440px) {
+  .project-container {
+    padding: 60px 1rem;
+  }
+  .project-content {
+    padding: 0;
+  }
+}

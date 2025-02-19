@@ -130,6 +130,10 @@
     grid-template-columns: 1fr;
   }
 
+  .about-container h1 {
+    
+  }
+
   .about-container img {
     display: none;
   }

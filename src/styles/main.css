@@ -3,6 +3,9 @@
 @import './header.css';
 @import './intro.css';
 @import './about.css';
+@import './project.css';
+@import './projects.css';
+
 
 * {
   margin: 0;
@@ -54,7 +57,7 @@ input, button {
   background-color: transparent;
 }
 
-button {
+button, a {
   cursor: pointer;
 }
 

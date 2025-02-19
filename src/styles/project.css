@@ -1,0 +1,119 @@
+.project-box {
+  background-color: var(--black);
+  color: var(--white);
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  box-shadow: 0 30px solid var(--white), 0 31px solid var(--gray2);
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.project-box img {
+  height: 100%;
+  object-fit: cover;
+  background-color: var(--gray2);
+}
+
+.project-box > div {
+  padding:20px;
+}
+
+.project-box h3 {
+  width: fit-content;
+  margin-bottom: 1rem;
+  font-family: 'Texturina', serif;
+}
+
+.project-box p {
+  font-size: 14px;
+}
+
+.project-box .project-box-tags {
+  display: flex;
+flex-wrap: wrap;
+  gap: 10px;
+  margin: 1rem 0;
+}
+
+.project-box .project-box-tags span {
+  background-color: var(--gray2);
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.project-box .link-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.project-box .github-link {
+  width: 40px;
+  height: 40px;
+  display: inherit;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--purple);
+  transition: 0.3s;
+  cursor: pointer !important;
+}
+
+.project-box .github-link:hover {
+  background-color: var(--white);
+}
+
+.project-box .github-link svg {
+  width: 18px;
+}
+
+.project-box .github-link svg path {
+  stroke: var(--black);
+}
+
+.project-box .demo {
+  display: inherit;
+  align-items: center;
+  background-color: var(--purple);
+  font-size: 12px;
+  text-transform: uppercase;
+  gap: 10px;
+  padding: 10px 20px;
+}
+
+.project-box .demo .arrow::before,
+.project-box .demo .arrow::after,
+.project-box .demo .arrow {
+  border-radius: 2px;
+  background-color: var(--white);
+  height: 2px;
+}
+
+.project-box .demo .arrow {
+  width: 12px;
+  position: relative;
+  transition: 0.3s;
+}
+
+.project-box .demo .arrow::before,
+.project-box .demo .arrow::after {
+  content: '';
+  width: 6px;
+  position: absolute;
+  right: -1px;
+}
+
+.project-box .demo .arrow::before {
+  transform: rotate(-45deg);
+  top: 2px;
+}
+
+.project-box .demo .arrow::after {
+  transform: rotate(45deg);
+  top: -2px;
+}
+
+.project-box .demo:hover .arrow {
+  width: 18px;
+}
