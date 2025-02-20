@@ -17,7 +17,9 @@
   margin-bottom: 1rem;
   width: fit-content;
   display: block;
+  font-family: 'Texturina', serif;
 }
+
 .about-container .max-container h2 .title-details .long-bar {
   background-color: var(--light-green);
 }

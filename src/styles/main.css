@@ -5,7 +5,8 @@
 @import './about.css';
 @import './project.css';
 @import './projects.css';
-
+@import './footer.css';
+@import './contact.css';
 
 * {
   margin: 0;
@@ -14,15 +15,17 @@
 }
 
 :root {
-  --gray4: #E1E1E6;
-  --gray3: #8A8A96;
-  --gray2: #29292E;
-  --gray1: #1B1B1F;
+  --gray4: #ccc;
+  --gray3: #8a8a96;
+  --gray2: #29292e;
+  --gray1: #1b1b1f;
   --black: #111;
-  --white: #FBFBFB;
-  --purple: #8333E8;
-  --light-green: #28E0A9;
-  --dark-green: #002E26;
+  --white: #fbfbfb;
+  --orange: #fe853e;
+  --dark-orange: #531f00;
+  --purple: #8333e8;
+  --light-green: #28e0a9;
+  --dark-green: #002e26;
 }
 
 html {
@@ -41,23 +44,30 @@ a {
   color: inherit;
 }
 
-input[type="radio"] {
+input[type='radio'] {
   display: none;
 }
 
-input, button, ul, li {
+input,
+button,
+ul,
+li,
+textarea {
   font-family: inherit;
   font-size: inherit;
   color: inherit;
 }
 
-input, button {
+input,
+button,
+textarea {
   outline: none;
   border: none;
   background-color: transparent;
 }
 
-button, a {
+button,
+a {
   cursor: pointer;
 }
 
@@ -65,9 +75,19 @@ img {
   max-width: 100%;
 }
 
-ul, li {
+ul,
+li {
   list-style: none;
 }
+
+svg {
+  width: 24px;
+  height: 24px;
+}
+
+/*---------------------------------------------------------------------------------------------------------
+  - CONTAINERS
+---------------------------------------------------------------------------------------------------------*/
 
 .max-container {
   max-width: 1024px;
@@ -79,12 +99,9 @@ ul, li {
   margin: 0 auto;
 }
 
-svg {
-  width: 24px;
-  height: 24px;
-}
-
-/* Titles Details */
+/*--------------------------------------------------------------------------------------------------- 
+Titles Details 
+-----------------------------------------------------------------------------------------------------*/
 
 .title-details {
   display: flex;
@@ -109,4 +126,128 @@ svg {
   height: 3px;
   border-radius: 50%;
   background-color: var(--purple);
+}
+
+/*-------------------------------------------------------------------------------------------
+  - lOADING
+-------------------------------------------------------------------------------------------*/
+
+.dots {
+  width: 1.5rem;
+  display: flex;
+  height: 100%;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.dots div {
+  width: 0.3rem;
+  height: 0.3rem;
+  border-radius: 50%;
+  align-self: flex-end;
+  background-color: var(--gray3);
+  animation: fade 0.8s ease-in-out alternate infinite;
+  transform: translateY(-3px);
+}
+
+.dots div:nth-of-type(1) {
+  animation-delay: -0.4s;
+}
+
+.dots div:nth-of-type(2) {
+  animation-delay: -0.2s;
+}
+
+/*------------------------------------------------------------------------------------------------------------
+  - FEEDBACK
+---------------------------------------------------------------------------------------------------------------*/
+
+.error {
+  color: var(--orange);
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.submit-menssage {
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 2rem;
+  right: 1rem;
+  z-index: 2;
+}
+
+.submit-menssage.error {
+  background-color: var(--orange);
+  color: var(--dark-orange);
+}
+
+.submit-menssage.sucess {
+  background-color: var(--light-green);
+  color: var(--dark-green);
+}
+
+.submit-menssage.show {
+  animation: slide-in 0.5s ease-in-out;
+}
+
+.submit-menssage.hide {
+  animation: slide-out 0.5s ease-in-out forwards;
+}
+
+.submit-menssage::before {
+  content: '';
+  position: absolute;
+  height: 10%;
+  left: 0;
+  bottom: 0;
+  animation: submit-loading 2s linear forwards;
+  z-index: 3;
+}
+
+.submit-menssage.sucess::before {
+  background-color: var(--dark-green);
+}
+
+.submit-menssage.error::before {
+  background-color: var(--dark-orange);
+}
+
+/*---------------------------------------------------------------------------------------------------------
+  - ANIMATIONS
+----------------------------------------------------------------------------------------------------------*/
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-out {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes submit-loading {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }

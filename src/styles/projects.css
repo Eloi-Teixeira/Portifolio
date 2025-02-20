@@ -44,12 +44,12 @@
   grid-column: 1/-1;
   width: fit-content;
   font-size: 3rem;
+  font-family: 'Texturina', serif;
 }
 
 .project-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   position: relative;
   gap: 10px;
 }
