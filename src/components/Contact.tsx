@@ -1,26 +1,37 @@
 import React from 'react';
 import Input from './Input';
-import SubmitMenssage, { SubmitMenssageProps } from './feedback/SubmitMenssage';
+import { SubmitMessageStatus } from './feedback/SubmitMessage.tsx';
 
 const Contact = () => {
   const maxLength = 2000;
   const [lengthLeft, setLengthLeft] = React.useState(maxLength);
-  const [error, setError] = React.useState(true);
+  const [message, setMessage] = React.useState<SubmitMessageStatus>(null);
   const [isLoading, setIsLoading] = React.useState(false);
-  const [message, setMessage] = React.useState<SubmitMenssageProps>('error');
+  const messageTime = 3000;
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData);
     console.log(data, e.currentTarget);
+
     // Implementar o envio do formulário aqui
-    setMessage('sucess');
-    setError((prev) => !prev);
-    setTimeout(() => {
+    // Exemplo de envio de dados para uma API fictícia
+    try {
+      setIsLoading(true);
+      const response = await fetch('https://data.origamid.dev/vendas/');
+      if (!response.ok) {
+        throw new Error(
+          'Erro ao enviar a mensagem. Tente novamente mais tarde.',
+        );
+      }
+      setMessage('success');
+    } catch (error) {
       setMessage('error');
-      setError((prev) => !prev);
-    }, 5000);
+      return;
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -64,7 +75,6 @@ const Contact = () => {
               placeholder="Nome"
               autoComplete="off"
               validationType="name"
-              required
             />
             <Input
               label="Email"
@@ -75,10 +85,10 @@ const Contact = () => {
               validationType="email"
             />
             <div>
-              <label htmlFor="menssage">Mensagem</label>
+              <label htmlFor="message">Mensagem</label>
               <textarea
-                name="menssage"
-                id="menssage"
+                name="message"
+                id="message"
                 maxLength={maxLength}
                 onChange={(e) => {
                   setLengthLeft(maxLength - e.target.value.length);
@@ -108,7 +118,6 @@ const Contact = () => {
           </form>
         </div>
       </div>
-      {error && <SubmitMenssage type={message} />}
     </section>
   );
 };
