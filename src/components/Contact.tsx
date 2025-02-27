@@ -5,11 +5,9 @@ import SubmitMenssage, { SubmitMenssageProps } from './feedback/SubmitMenssage';
 const Contact = () => {
   const maxLength = 2000;
   const [lengthLeft, setLengthLeft] = React.useState(maxLength);
-  const [error, setError] = React.useState(false);
+  const [error, setError] = React.useState(true);
   const [isLoading, setIsLoading] = React.useState(false);
-  const [message, setMessage] = React.useState<SubmitMenssageProps>({
-    type: 'error',
-  });
+  const [message, setMessage] = React.useState<SubmitMenssageProps>('error');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -17,10 +15,10 @@ const Contact = () => {
     const data = Object.fromEntries(formData);
     console.log(data, e.currentTarget);
     // Implementar o envio do formulário aqui
-    setMessage({ type: 'sucess' });
+    setMessage('sucess');
     setError((prev) => !prev);
     setTimeout(() => {
-      setMessage({ type: 'error' });
+      setMessage('error');
       setError((prev) => !prev);
     }, 5000);
   };
@@ -65,6 +63,7 @@ const Contact = () => {
               id="name"
               placeholder="Nome"
               autoComplete="off"
+              validationType="name"
               required
             />
             <Input
@@ -109,7 +108,7 @@ const Contact = () => {
           </form>
         </div>
       </div>
-      {error && <SubmitMenssage type={message.type} />}
+      {error && <SubmitMenssage type={message} />}
     </section>
   );
 };

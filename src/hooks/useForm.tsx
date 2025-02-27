@@ -5,9 +5,13 @@ const types: { [key: string]: { regex: RegExp; message: string } } = {
     regex: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
     message: 'Preencha um email válido',
   },
+  name: {
+    regex: /^[a-zA-Z\u00C0-\u017F´]{0,}$/,
+    message: 'Preencha um nome valido'
+  }
 };
 
-export type ValidationType = 'email' | undefined;
+export type ValidationType = 'email'| 'name' | undefined;
 
 interface IUseForm {
   value: string;

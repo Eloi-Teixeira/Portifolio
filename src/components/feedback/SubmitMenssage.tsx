@@ -1,10 +1,8 @@
 import React from 'react';
 
-export type SubmitMenssageProps = {
-  type: null | 'sucess' | 'error';
-};
+export type SubmitMenssageProps = null | 'sucess' | 'error';
 
-const SubmitMenssage = ({ type }: SubmitMenssageProps) => {
+const SubmitMenssage = ({ type }: { type: SubmitMenssageProps }) => {
   if (type === null) {
     return null;
   }

@@ -8,9 +8,9 @@
 
 .project-container .icon-container {
   min-width: 250px;
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   gap: 1.5rem;
   padding-top: 40px;
 }
@@ -24,9 +24,8 @@
 
 .project-container .icon-container svg:nth-child(even) {
   animation: 8s float infinite linear;
-  justify-self: center;
+  align-self: center;
 }
-
 
 .project-container .icon-container svg:nth-child(2),
 .project-container .icon-container svg:nth-child(5),
@@ -37,7 +36,7 @@
 .project-container .icon-container svg:nth-child(3),
 .project-container .icon-container svg:nth-child(7) {
   animation: 10s float infinite linear;
-  justify-self: end;
+  align-self: end;
 }
 
 .project-container h2 {
@@ -106,7 +105,6 @@
 @media (max-width: 640px) {
   .project-content .project-box {
     grid-template-columns: 1fr;
-
   }
 }
 
