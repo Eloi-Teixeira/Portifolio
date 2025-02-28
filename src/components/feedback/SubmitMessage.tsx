@@ -10,7 +10,7 @@ type SubmitMessageProps = {
   displayTime?: number;
 };
 
-const DEFAULT_DISPLAY_TIME = 2500;
+const default_displayTime = 2500;
 
 const useVisibilityTimer = (active: boolean, duration: number): boolean => {
   const [isVisible, setIsVisible] = useState(active);
@@ -30,7 +30,7 @@ const SubmitMessage: FC<SubmitMessageProps> = ({
   type,
   successMessage = 'Mensagem enviada com sucesso!',
   errorMessage = 'Erro ao enviar a mensagem. Tente novamente mais tarde.',
-  displayTime = DEFAULT_DISPLAY_TIME,
+  displayTime = default_displayTime,
 }) => {
   if (type === null) return null;
 
@@ -50,23 +50,21 @@ const SubmitMessage: FC<SubmitMessageProps> = ({
   );
 };
 
-const useSubmitMessage: FC<SubmitMessageProps> = ({
+const useSubmitMessage = ({
   type,
   successMessage,
   errorMessage,
-  displayTime = DEFAULT_DISPLAY_TIME,
+  displayTime = default_displayTime,
 }: SubmitMessageProps) => {
   const [visibleType, setVisibleType] = useState<SubmitMessageStatus | null>(type);
 
   useEffect(() => {
     setVisibleType(type);
 
-    console.log(type)
     if (type !== null) {
       const timer = setTimeout(() => {
-        console.log(type, visibleType)
         setVisibleType(null);
-      }, displayTime * 2);
+      }, displayTime + 1000);
       return () => clearTimeout(timer);
     }
   }, [type, displayTime]);

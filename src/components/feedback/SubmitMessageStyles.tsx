@@ -44,7 +44,7 @@ const submitMessageBaseStyle = css<SubmitMessageStyleProps>`
   z-index: 99;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   animation: ${(props) => (props.$isVisible ? slideIn : slideOut)}
-    ${(props) => (props.$time ? props.$time / 4 : 0.5)}s ease forwards;
+    ${(props) => (props.$time ? props.$time / 4 / 1000 : 0.5)}s ease forwards;
 `;
 
 const SubmitMessageDiv = styled.div<SubmitMessageStyleProps>`

@@ -1,37 +1,47 @@
 import React from 'react';
 import Input from './Input';
-import { SubmitMessageStatus } from './feedback/SubmitMessage.tsx';
+import {
+  SubmitMessageStatus,
+  useSubmitMessage,
+} from './feedback/SubmitMessage.tsx';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const maxLength = 2000;
   const [lengthLeft, setLengthLeft] = React.useState(maxLength);
-  const [message, setMessage] = React.useState<SubmitMessageStatus>(null);
+  const [status, setStatus] = React.useState<SubmitMessageStatus>(null);
   const [isLoading, setIsLoading] = React.useState(false);
   const messageTime = 3000;
+  const FeedBack = useSubmitMessage({ type: status, displayTime: messageTime });
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData);
-    console.log(data, e.currentTarget);
 
-    // Implementar o envio do formulário aqui
-    // Exemplo de envio de dados para uma API fictícia
-    try {
-      setIsLoading(true);
-      const response = await fetch('https://data.origamid.dev/vendas/');
-      if (!response.ok) {
-        throw new Error(
-          'Erro ao enviar a mensagem. Tente novamente mais tarde.',
-        );
-      }
-      setMessage('success');
-    } catch (error) {
-      setMessage('error');
-      return;
-    } finally {
-      setIsLoading(false);
+    if (status !== null) {
+      setStatus(null);
     }
+
+    setIsLoading(true);
+
+    emailjs
+      .sendForm('service_yywrcye', 'template_ygi7p8l', e.currentTarget, {
+        publicKey: 'PbxMa-3Z3FarcZ-p1',
+        limitRate: {
+          id: 'app',
+          throttle: 5000,
+        },
+      })
+      .then((result) => {
+        console.log('Email enviado com sucesso:', result.text);
+        setStatus('success');
+      })
+      .catch((error) => {
+        console.error('Erro ao enviar o email:', error);
+        setStatus('error');
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   return (
@@ -71,6 +81,7 @@ const Contact = () => {
             </h3>
             <Input
               label="Nome"
+              name="user_name"
               id="name"
               placeholder="Nome"
               autoComplete="off"
@@ -79,6 +90,7 @@ const Contact = () => {
             <Input
               label="Email"
               id="email"
+              name="user_email"
               placeholder="exemplo@email.com"
               autoComplete="off"
               type="email"
@@ -118,6 +130,7 @@ const Contact = () => {
           </form>
         </div>
       </div>
+      {FeedBack}
     </section>
   );
 };

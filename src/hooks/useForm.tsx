@@ -6,8 +6,8 @@ const types: { [key: string]: { regex: RegExp; message: string } } = {
     message: 'Preencha um email válido',
   },
   name: {
-    regex: /^[a-zA-Z\u00C0-\u017F´]{0,}$/,
-    message: 'Preencha um nome valido'
+    regex: /^[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ][a-záéíóúâêôçàãõ]+(?:\s[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ][a-záéíóúâêôçàãõ]+)*$/,
+    message: 'O nome deve começar com letra maiúscula e não pode conter números ou caracteres especiais.',
   }
 };
 
@@ -27,8 +27,8 @@ const useForm = (type: ValidationType): IUseForm => {
   const [error, setError] = React.useState<string | null>(null);
 
   function validate(value: string) {
-    if (type === undefined) return true;
-    if (value.length === 0) {
+    if (!type) return true;
+    if (!value.trim()) {
       setError('Preencha um valor.');
       return false;
     } else if (types[type] && !types[type].regex.test(value)) {
