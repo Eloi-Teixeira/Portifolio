@@ -1,30 +1,55 @@
-import React from 'react';
+import React, { use } from 'react';
 import Input from './Input';
 import {
   SubmitMessageStatus,
   useSubmitMessage,
 } from './feedback/SubmitMessage.tsx';
 import emailjs from '@emailjs/browser';
+import useForm from '../hooks/useForm.tsx';
 
 const Contact = () => {
   const maxLength = 2000;
+  const messageTime = 3000;
+
   const [lengthLeft, setLengthLeft] = React.useState(maxLength);
   const [status, setStatus] = React.useState<SubmitMessageStatus>(null);
+  const [message, setMessage] = React.useState<string | undefined>(undefined);
   const [isLoading, setIsLoading] = React.useState(false);
-  const messageTime = 3000;
-  const FeedBack = useSubmitMessage({ type: status, displayTime: messageTime });
+
+  const FeedBack = useSubmitMessage({
+    type: status,
+    displayTime: messageTime,
+    errorMessage: message,
+  });
+
+  const name = useForm('name');
+  const email = useForm('email');
+  const messageInput = React.useRef<HTMLTextAreaElement>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    if (messageInput.current === null) return;
     if (status !== null) {
       setStatus(null);
+      setMessage(undefined);
     }
+
+    if (!name.validate() || !email.validate() || messageInput.current.value.length === 0) {
+      setStatus('error');
+      setMessage('Preencha todos os campos corretamente');
+      return;
+    }
+
+    const templateParams = {
+      name: name.value,
+      email: email.value,
+      message: messageInput.current.value,
+    };
 
     setIsLoading(true);
 
     emailjs
-      .sendForm('service_yywrcye', 'template_ygi7p8l', e.currentTarget, {
+      .send('service_yywrcye', 'template_ygi7p8l', templateParams, {
         publicKey: 'PbxMa-3Z3FarcZ-p1',
         limitRate: {
           id: 'app',
@@ -41,6 +66,10 @@ const Contact = () => {
       })
       .finally(() => {
         setIsLoading(false);
+        name.clear();
+        email.clear();
+        if (messageInput.current) messageInput.current.value = '';
+        setLengthLeft(maxLength);
       });
   };
 
@@ -79,23 +108,36 @@ const Contact = () => {
             <h3>
               Envie uma <span>Mensagem</span>
             </h3>
-            <Input
-              label="Nome"
-              name="user_name"
-              id="name"
-              placeholder="Nome"
-              autoComplete="off"
-              validationType="name"
-            />
-            <Input
-              label="Email"
-              id="email"
-              name="user_email"
-              placeholder="exemplo@email.com"
-              autoComplete="off"
-              type="email"
-              validationType="email"
-            />
+            <div>
+              <label htmlFor="name">Nome</label>
+              <input
+                type="text"
+                name="user_name"
+                id="name"
+                required
+                onChange={name.onChange}
+                onBlur={name.onBlur}
+                value={name.value}
+                placeholder="Nome"
+                autoComplete="off"
+              />
+              {name.error && <p className="error">{name.error}</p>}
+            </div>
+            <div>
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                name="user_email"
+                id="email"
+                required
+                onChange={email.onChange}
+                onBlur={email.onBlur}
+                value={email.value}
+                placeholder="exemplo@email.com"
+                autoComplete="off"
+              />
+              {email.error && <p className="error">{email.error}</p>}
+            </div>
             <div>
               <label htmlFor="message">Mensagem</label>
               <textarea
@@ -105,6 +147,7 @@ const Contact = () => {
                 onChange={(e) => {
                   setLengthLeft(maxLength - e.target.value.length);
                 }}
+                ref={messageInput}
                 placeholder="Escreva sua mensagem aqui..."
                 autoComplete="on"
                 required

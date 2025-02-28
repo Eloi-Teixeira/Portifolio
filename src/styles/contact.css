@@ -89,6 +89,15 @@
   color: var(--light-green);
 }
 
+.contact-form > div {
+  margin-bottom: 1rem;
+}
+
+.contact-form div:focus-within {
+  transition: all 0.3s;
+  color: var(--light-green);
+}
+
 .contact-form textarea,
 .contact-form input {
   padding: 1rem;
@@ -115,11 +124,6 @@
 
 .contact-form label:hover {
   transition: 0.3s;
-  color: var(--light-green);
-}
-
-.contact-form div:focus-within {
-  transition: all 0.3s;
   color: var(--light-green);
 }
 

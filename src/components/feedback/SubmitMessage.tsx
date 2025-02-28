@@ -26,12 +26,12 @@ const useVisibilityTimer = (active: boolean, duration: number): boolean => {
   return isVisible;
 };
 
-const SubmitMessage: FC<SubmitMessageProps> = ({
+const SubmitMessage = ({
   type,
   successMessage = 'Mensagem enviada com sucesso!',
   errorMessage = 'Erro ao enviar a mensagem. Tente novamente mais tarde.',
   displayTime = default_displayTime,
-}) => {
+}: SubmitMessageProps) => {
   if (type === null) return null;
 
   const isVisible = useVisibilityTimer(true, displayTime);

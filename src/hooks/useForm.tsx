@@ -2,16 +2,18 @@ import React from 'react';
 
 const types: { [key: string]: { regex: RegExp; message: string } } = {
   email: {
-    regex: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    regex:
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
     message: 'Preencha um email válido',
   },
   name: {
-    regex: /^[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ][a-záéíóúâêôçàãõ]+(?:\s[A-ZÁÉÍÓÚÂÊÔÇÀÃÕ][a-záéíóúâêôçàãõ]+)*$/,
+    regex:
+      /^(?:[A-ZÀ-Ú][a-zà-úç']+(?:\s(?:d[aeo]s?|e|[A-ZÀ-Ú][a-zà-úç']*))?\s*)+$/,
     message: 'O nome deve começar com letra maiúscula e não pode conter números ou caracteres especiais.',
-  }
+  },
 };
 
-export type ValidationType = 'email'| 'name' | undefined;
+export type ValidationType = 'email' | 'name' | undefined;
 
 interface IUseForm {
   value: string;
@@ -20,6 +22,7 @@ interface IUseForm {
   error: string | null;
   validate: () => boolean;
   onBlur: () => boolean;
+  clear: () => void;
 }
 
 const useForm = (type: ValidationType): IUseForm => {
@@ -40,9 +43,14 @@ const useForm = (type: ValidationType): IUseForm => {
     }
   }
 
-  function onChange({ target }: React.ChangeEvent<HTMLInputElement>) {
+  function onChange({ target }: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) {
     if (error) validate(target.value);
     setValue(target.value);
+  }
+
+  function clear() {
+    setValue('');
+    setError(null);
   }
 
   return {
@@ -52,6 +60,7 @@ const useForm = (type: ValidationType): IUseForm => {
     error,
     validate: () => validate(value),
     onBlur: () => validate(value),
+    clear,
   };
 };
 
