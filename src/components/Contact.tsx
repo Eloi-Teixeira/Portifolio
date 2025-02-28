@@ -1,5 +1,4 @@
-import React, { use } from 'react';
-import Input from './Input';
+import React from 'react';
 import {
   SubmitMessageStatus,
   useSubmitMessage,
@@ -34,7 +33,11 @@ const Contact = () => {
       setMessage(undefined);
     }
 
-    if (!name.validate() || !email.validate() || messageInput.current.value.length === 0) {
+    if (
+      !name.validate() ||
+      !email.validate() ||
+      messageInput.current.value.length === 0
+    ) {
       setStatus('error');
       setMessage('Preencha todos os campos corretamente');
       return;

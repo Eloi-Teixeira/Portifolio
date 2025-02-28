@@ -1,4 +1,3 @@
-import React from 'react';
 import IconReact from '../assets/icons/IconReact';
 import IconTypeScript from '../assets/icons/IconTypeScript';
 import IconJavaScript from '../assets/icons/IconJavaScript';
@@ -7,7 +6,6 @@ import IconExpress from '../assets/icons/IconExpress';
 import IconTailwind from '../assets/icons/IconTailwind';
 import IconMongoDB from '../assets/icons/IconMongoDB';
 import IconNode from '../assets/icons/IconNode';
-import IconGitHub from '../assets/icons/IconGitHub';
 import ImgComputer from '../assets/imgs/computer.png';
 import Project from './Project';
 
