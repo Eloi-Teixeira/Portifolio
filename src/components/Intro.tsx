@@ -16,7 +16,7 @@ const Intro = () => {
             <IconGitHub />
           </a>
           <a className="download-cv" href={Cv} download>
-            {t('DownloadButton')}
+            {t('DownloadBtn')}
             <IconDownload />
           </a>
         </div>

@@ -2,11 +2,14 @@ import React from 'react';
 import {
   SubmitMessageStatus,
   useSubmitMessage,
-} from './feedback/SubmitMessage.tsx';
+} from '../hooks/feedback/SubmitMessage.tsx';
 import emailjs from '@emailjs/browser';
 import useForm from '../hooks/useForm.tsx';
+import { Trans, useTranslation } from 'react-i18next';
+import { TitleWithDetails } from './utils/Decorations.tsx';
 
 const Contact = () => {
+  const { t } = useTranslation();
   const maxLength = 2000;
   const messageTime = 3000;
 
@@ -79,25 +82,11 @@ const Contact = () => {
   return (
     <section id="contact">
       <div className="max-container contact-container">
-        <h2>
-          Contato
-          <div className="title-details">
-            <span className="long-bar"></span>
-            <div>
-              <span className="circle"></span>
-              <span className="circle"></span>
-              <span className="circle"></span>
-            </div>
-          </div>
-        </h2>
+        <TitleWithDetails title={t('ContactTitle')} />
         <div className="contact-content">
           <div className="contact-text">
-            <h3>Vamos trabalhar juntos?</h3>
-            <p>
-              Tem um projeto em mente ou quer bater um papo sobre tecnologia e
-              design? Estou sempre aberto a novas oportunidades, colaborações e
-              desafios interessantes.
-            </p>
+            <h3>{t('ContactSubTitle')}</h3>
+            <p>{t('ContactDescription')}</p>
             <ul>
               <li>
                 Email: <a href="">eloi.tg1@gmail.com</a>
@@ -109,10 +98,13 @@ const Contact = () => {
           </div>
           <form className="contact-form" onSubmit={handleSubmit}>
             <h3>
-              Envie uma <span>Mensagem</span>
+              <Trans
+                i18nKey={'ContactFormTitle'}
+                components={{ span: <span /> }}
+              />{' '}
             </h3>
             <div>
-              <label htmlFor="name">Nome</label>
+              <label htmlFor="name">{t('ContactFormName')}</label>
               <input
                 type="text"
                 name="user_name"
@@ -121,13 +113,13 @@ const Contact = () => {
                 onChange={name.onChange}
                 onBlur={name.onBlur}
                 value={name.value}
-                placeholder="Nome"
+                placeholder={t('ContactFormNamePlaceholder')}
                 autoComplete="off"
               />
               {name.error && <p className="error">{name.error}</p>}
             </div>
             <div>
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">{t('ContactFormEmail')}</label>
               <input
                 type="email"
                 name="user_email"
@@ -136,13 +128,13 @@ const Contact = () => {
                 onChange={email.onChange}
                 onBlur={email.onBlur}
                 value={email.value}
-                placeholder="exemplo@email.com"
+                placeholder={t('ContactFormEmailPlaceholder')}
                 autoComplete="off"
               />
               {email.error && <p className="error">{email.error}</p>}
             </div>
             <div>
-              <label htmlFor="message">Mensagem</label>
+              <label htmlFor="message">{t('ContactFormMessage')}</label>
               <textarea
                 name="message"
                 id="message"
@@ -151,7 +143,7 @@ const Contact = () => {
                   setLengthLeft(maxLength - e.target.value.length);
                 }}
                 ref={messageInput}
-                placeholder="Escreva sua mensagem aqui..."
+                placeholder={t('ContactFormMessagePlaceholder')}
                 autoComplete="on"
                 required
               ></textarea>
@@ -161,7 +153,7 @@ const Contact = () => {
               {isLoading ? (
                 <>
                   <span>
-                    Carregando
+                    {t('ContactFormSendBtn')}
                     <div className="dots">
                       <div></div>
                       <div></div>
@@ -170,7 +162,7 @@ const Contact = () => {
                   </span>
                 </>
               ) : (
-                'Enviar'
+                t('ContactFormSendBtn')
               )}
             </button>
           </form>

@@ -41,6 +41,7 @@
   flex-wrap: wrap;
   gap: 10px;
   margin-block: 1.5rem;
+  overflow: hidden !important;
 }
 
 .about-container .about-tags span {

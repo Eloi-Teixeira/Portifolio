@@ -1,25 +1,29 @@
 import ImgProjectCalc from '../assets/imgs/projects/calc.png';
 // import ImgProjectTwo from '../assets/imgs/project-two.png';
-import Project from './Project';
-import { IconsContainer, TitleDetail } from './decorations/Decorations';
+import Project from './utils/Project';
+import { IconsContainer, TitleWithDetails } from './utils/Decorations';
+import { useTranslation } from 'react-i18next';
 
 const Projects = () => {
+  const { t } = useTranslation();
   return (
     <section className="max-container project-container" id="projects">
-      <h2>
-        Projetos
-        <TitleDetail />
-      </h2>
+      <TitleWithDetails title={t('ProjectsTitle')} />
       <IconsContainer />
       <div className="project-content">
         <Project
-          nome="Calculadora Online"
-          description="Criei um site em React e JavaScript para ajudar alunos do ensino
-              médio a resolver cálculos matemáticos de forma interativa.
-              Inspirado na dificuldade da minha irmã, o site contém cerca de 30
-              fórmulas, permitindo calcular qualquer variável dentro delas.
-              Organizei tudo de forma intuitiva, tornando o aprendizado mais
-              prático e dinâmico."
+          nome={t('ProjectCalcTitle')}
+          description={t('ProjectCalcDescription')}
+          tags={['React', 'JavaScript', 'HTML', 'CSS']}
+          img={ImgProjectCalc}
+          links={[
+            'https://github.com/Eloi-Teixeira/Calculadora',
+            'https://calculadoraonlinematematica.netlify.app/',
+          ]}
+        />
+        <Project
+          nome={t('ProjectCalcTitle')}
+          description={t('ProjectCalcDescription')}
           tags={['React', 'JavaScript', 'HTML', 'CSS']}
           img={ImgProjectCalc}
           links={[

@@ -10,16 +10,25 @@ import IconTypeScript from '../../assets/icons/IconTypeScript';
 
 export const TitleDetail = () => {
   return (
-    <div className="title-details">
-      <span className="long-bar"></span>
-      <div>
-        <span className="circle"></span>
-        <span className="circle"></span>
-        <span className="circle"></span>
+      <div className="title-details">
+        <span className="long-bar"></span>
+        <div>
+          <span className="circle"></span>
+          <span className="circle"></span>
+          <span className="circle"></span>
+        </div>
       </div>
-    </div>
   );
 };
+
+export const TitleWithDetails = ({ title }: { title: string }) => {
+  return (
+    <h2>
+      {title}
+      <TitleDetail />
+    </h2>
+  );
+}
 
 export const IconsContainer = () => {
   const options = React.useMemo(() => {

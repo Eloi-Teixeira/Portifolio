@@ -85,7 +85,7 @@
 
 @media (max-width: 924px) {
   .max-container-2.intro-container {
-    margin: 30px auto;
+    margin: 3rem auto;
   }
 
   .intro-content h1 {
@@ -93,7 +93,7 @@
   }
 
   .intro-content > span {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -117,8 +117,13 @@
     order: 2;
   }
 
+  .intro-content > span {
+    transform: translateY(0);
+  }
+
   .intro-content h1 span {
     display: inline;
+    margin-left: 0.5rem;
   }
 }
 

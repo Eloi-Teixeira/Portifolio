@@ -1,8 +1,6 @@
 .project-container {
   display: grid;
   padding: 120px 0;
-  column-gap: 2rem;
-  row-gap: 30px;
   position: relative;
 }
 
@@ -11,6 +9,7 @@
   width: fit-content;
   font-size: 3rem;
   font-family: 'Texturina', serif;
+  margin-bottom: 1.5rem;
 }
 
 .project-content {
@@ -27,9 +26,10 @@
   height: 1px;
   background-color: var(--gray2);
   display: flex;
-  bottom: -15px;
+  bottom: -20px;
   align-self: center;
   left: 10%;
+  opacity: .5;
 }
 
 .project-content .project-box:last-child::after {
@@ -69,10 +69,22 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .project-content .project-box {
     grid-template-columns: 1fr;
   }
+
+  .project-box > div {
+    grid-template-areas:
+      'title'
+      'description'
+      'tags'
+      'links'
+  }
+
+.project-box .link-container {
+  justify-content: flex-start;
+}
 }
 
 @media (max-width: 440px) {

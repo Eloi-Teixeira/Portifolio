@@ -1,5 +1,6 @@
-import IconGitHub from '../assets/icons/IconGitHub';
-import { TitleDetail } from './decorations/Decorations';
+import { useTranslation } from 'react-i18next';
+import IconGitHub from '../../assets/icons/IconGitHub';
+import { TitleDetail } from './Decorations';
 
 interface IProject {
   nome: string;
@@ -10,6 +11,7 @@ interface IProject {
 }
 
 const Project = ({ nome, description, tags, img, links }: IProject) => {
+  const { t } = useTranslation();
   return (
     <div className="project-box">
       <img src={img} alt="imagem do projeto" />
@@ -33,7 +35,7 @@ const Project = ({ nome, description, tags, img, links }: IProject) => {
             <IconGitHub />
           </a>
           <a href={links[1]} className="demo" target="_blank">
-            Ver Projeto
+            {t('ProjectDemoBtn')}
             <span className="arrow"></span>
           </a>
         </div>

@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   box-shadow: 0 30px solid var(--white), 0 31px solid var(--gray2);
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
   position: relative;
 }
 
@@ -41,6 +41,7 @@
   flex-wrap: wrap;
   gap: 10px;
   grid-area: tags;
+  height: fit-content;
 }
 
 .project-box .project-box-tags span {

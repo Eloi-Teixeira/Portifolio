@@ -1,24 +1,19 @@
 import ImgGrafics from '../assets/imgs/grafics.png';
 import IconDownload from '../assets/icons/IconDownload';
 import Cv from '../assets/cv/cv.pdf';
-import { TitleDetail } from './decorations/Decorations';
+import { TitleWithDetails } from './utils/Decorations';
+import { Trans, useTranslation } from 'react-i18next';
 
 const About = () => {
+  const { t } = useTranslation();
   return (
     <section className="about-container" id="about">
       <div className="max-container">
         <img src={ImgGrafics} alt="" />
         <div>
-          <h2>
-            Sobre Mim
-            <TitleDetail />
-          </h2>
+          <TitleWithDetails title={t('AboutTitle')} />
           <p>
-            Olá! Me chamo Elói, sou desenvolvedor Full-Stack com foco em{' '}
-            <span>React</span> e <span>TypeScript</span>, buscando primeira
-            oportunidade no mercado. Possuo sólida base em desenvolvimento web
-            moderno e experiência com projetos práticos. Comprometido com
-            aprendizado contínuo e desenvolvimento de código limpo e eficiente.
+            <Trans i18nKey="AboutDescription" components={{ span: <span /> }} />
           </p>
           <div className="about-tags">
             <span className="about-tag">React</span>
@@ -32,7 +27,7 @@ const About = () => {
             <span className="about-tag">HTML</span>
           </div>
           <a className="download-cv" href={Cv} download>
-            Baixar Curriculo <IconDownload />
+            {t('DownloadBtn')} <IconDownload />
           </a>
         </div>
       </div>
