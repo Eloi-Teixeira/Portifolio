@@ -1,42 +1,9 @@
 .project-container {
   display: grid;
-  grid-template-columns: auto 2fr;
   padding: 120px 0;
   column-gap: 2rem;
   row-gap: 30px;
-}
-
-.project-container .icon-container {
-  min-width: 250px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 1.5rem;
-  padding-top: 40px;
-}
-
-.project-container .icon-container svg {
-  width: 48px;
-  height: 48px;
-  opacity: 0.1;
-  animation: 4s float infinite linear;
-}
-
-.project-container .icon-container svg:nth-child(even) {
-  animation: 8s float infinite linear;
-  align-self: center;
-}
-
-.project-container .icon-container svg:nth-child(2),
-.project-container .icon-container svg:nth-child(5),
-.project-container .icon-container svg:nth-child(6) {
-  animation: 6s float infinite linear;
-}
-
-.project-container .icon-container svg:nth-child(3),
-.project-container .icon-container svg:nth-child(7) {
-  animation: 10s float infinite linear;
-  align-self: end;
+  position: relative;
 }
 
 .project-container h2 {

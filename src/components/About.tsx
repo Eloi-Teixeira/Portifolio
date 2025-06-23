@@ -1,6 +1,7 @@
 import ImgGrafics from '../assets/imgs/grafics.png';
 import IconDownload from '../assets/icons/IconDownload';
 import Cv from '../assets/cv/cv.pdf';
+import { TitleDetail } from './decorations/Decorations';
 
 const About = () => {
   return (
@@ -10,14 +11,7 @@ const About = () => {
         <div>
           <h2>
             Sobre Mim
-            <div className="title-details">
-              <span className="long-bar"></span>
-              <div>
-                <span className="circle"></span>
-                <span className="circle"></span>
-                <span className="circle"></span>
-              </div>
-            </div>
+            <TitleDetail />
           </h2>
           <p>
             Olá! Me chamo Elói, sou desenvolvedor Full-Stack com foco em{' '}

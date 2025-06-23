@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  margin-block: 120px;
+  margin-block: 16rem;
   padding-inline: 2rem;
 }
 
@@ -12,16 +12,16 @@
 }
 
 .intro-content > span {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 600;
   font-family: 'Texturina', serif;
-  transform: translateY(10px);
+  transform: translateY(15px);
   color: var(--purple);
 }
 
 .intro-content h1 {
   font-family: 'Texturina', serif;
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 700;
   margin-bottom: 20px;
   line-height: 120%;

@@ -1,38 +1,16 @@
-import IconReact from '../assets/icons/IconReact';
-import IconTypeScript from '../assets/icons/IconTypeScript';
-import IconJavaScript from '../assets/icons/IconJavaScript';
-import IconCSS from '../assets/icons/IconCSS';
-import IconExpress from '../assets/icons/IconExpress';
-import IconTailwind from '../assets/icons/IconTailwind';
-import IconMongoDB from '../assets/icons/IconMongoDB';
-import IconNode from '../assets/icons/IconNode';
-import ImgComputer from '../assets/imgs/computer.png';
+import ImgProjectCalc from '../assets/imgs/projects/calc.png';
+// import ImgProjectTwo from '../assets/imgs/project-two.png';
 import Project from './Project';
+import { IconsContainer, TitleDetail } from './decorations/Decorations';
 
 const Projects = () => {
   return (
     <section className="max-container project-container" id="projects">
       <h2>
         Projetos
-        <div className="title-details">
-          <span className="long-bar"></span>
-          <div>
-            <span className="circle"></span>
-            <span className="circle"></span>
-            <span className="circle"></span>
-          </div>
-        </div>
+        <TitleDetail />
       </h2>
-      <div className="icon-container">
-        <IconReact />
-        <IconTypeScript />
-        <IconJavaScript />
-        <IconCSS />
-        <IconExpress />
-        <IconTailwind />
-        <IconMongoDB />
-        <IconNode />
-      </div>
+      <IconsContainer />
       <div className="project-content">
         <Project
           nome="Calculadora Online"
@@ -43,9 +21,9 @@ const Projects = () => {
               Organizei tudo de forma intuitiva, tornando o aprendizado mais
               prático e dinâmico."
           tags={['React', 'JavaScript', 'HTML', 'CSS']}
-          img={ImgComputer}
+          img={ImgProjectCalc}
           links={[
-            'https://github.com/Eloi-Teixeira/Calculadora?tab=readme-ov-file',
+            'https://github.com/Eloi-Teixeira/Calculadora',
             'https://calculadoraonlinematematica.netlify.app/',
           ]}
         />
