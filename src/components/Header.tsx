@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next';
 
 const Header = () => {
   const { t, i18n } = useTranslation();
+  const [isLangMenuOpen, setisLangMenuOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const handleLanguageChange = async (language: string) => {
     await i18n.changeLanguage(language);
   };
@@ -24,37 +26,41 @@ const Header = () => {
         !target.closest('#menu-mobile-btn') &&
         !target.closest('#menu-lang-btn')
       ) {
-        console.log('click');
-
-        const menuBtn = document.getElementById('menu-mobile-btn');
-        const langBtn = document.getElementById('menu-lang-btn');
-        menuBtn?.classList.remove('active');
-        langBtn?.classList.remove('active');
-        const menuContainer = document.querySelector('.menu-container.show');
-        const languageContainer = document.querySelector('.language-container.show');
-        menuContainer?.classList.remove('show');
-        languageContainer?.classList.remove('show');
+        setIsMenuOpen(false);
+        setisLangMenuOpen(false);
       }
     });
     return () => {
       window.removeEventListener('click', () => {});
     };
-  })
+  });
 
   return (
     <header className="header-container">
       <nav className="header-content max-container">
         <Logo />
-        <button id="menu-mobile-btn" onClick={handleMenuClick}>
+        <button
+          id="menu-mobile-btn"
+          className={isMenuOpen ? 'active' : ''}
+          onClick={() => {
+            setIsMenuOpen(!isMenuOpen);
+          }}
+        >
           <span className="menu-mobile-btn-bar"></span>
         </button>
-        <ul className="menu-container">
+        <ul className={'menu-container' + (isMenuOpen ? ' show' : '')}>
           <li>
-            <button onClick={handleMenuClick} id="menu-lang-btn">
+            <button
+              onClick={() => setisLangMenuOpen(!isLangMenuOpen)}
+              className={isLangMenuOpen ? 'active' : ''}
+              id="menu-lang-btn"
+            >
               <IconTranslate />
               <span className="menu-lang-legend">{t('headerTranslate')}</span>
             </button>
-            <ul className="language-container">
+            <ul
+              className={'language-container' + (isLangMenuOpen ? ' show' : '')}
+            >
               <li>
                 <button onClick={() => handleLanguageChange('pt')}>
                   {t('pt')}

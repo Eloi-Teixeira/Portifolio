@@ -6,25 +6,35 @@ import { Trans, useTranslation } from 'react-i18next';
 
 const About = () => {
   const { t } = useTranslation();
+  const items = [
+    'HTML',
+    'CSS',
+    'JavaScript',
+    'React',
+    'TypeScript',
+    'Node.js',
+    'MongoDB',
+    'Express.js',
+    'Next.js',
+    'Tailwind CSS',
+  ];
   return (
     <section className="about-container" id="about">
       <div className="max-container">
-        <img src={ImgGrafics} alt="" />
+        <img src={ImgGrafics} alt="Programming" />
         <div>
           <TitleWithDetails title={t('AboutTitle')} />
           <p>
             <Trans i18nKey="AboutDescription" components={{ span: <span /> }} />
           </p>
-          <div className="about-tags">
-            <span className="about-tag">React</span>
-            <span className="about-tag">TypeScript</span>
-            <span className="about-tag">NodeJS</span>
-            <span className="about-tag">JavaScript</span>
-            <span className="about-tag">Express</span>
-            <span className="about-tag">MongoDB</span>
-            <span className="about-tag">Tailwind</span>
-            <span className="about-tag">CSS</span>
-            <span className="about-tag">HTML</span>
+          <div className="about-tags-container">
+            <div className="scroll-track">
+              {[...items, ...items].map((item, i) => (
+                <span key={i} className="about-tag" title={item}>
+                  {item}
+                </span>
+              ))}
+            </div>
           </div>
           <a className="download-cv" href={Cv} download>
             {t('DownloadBtn')} <IconDownload />

@@ -36,24 +36,31 @@
   color: var(--light-green);
 }
 
-.about-container .about-tags {
+.about-container .scroll-track {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-block: 1.5rem;
-  overflow: hidden !important;
+  width: max-content;
+  animation: scroll 20s linear infinite;
 }
 
-.about-container .about-tags span {
+.about-container .about-tags-container {
+  margin-block: 1.5rem;
+  overflow: hidden;
+  max-width: 550px;
+}
+
+.about-container .about-tags-container span {
   background-color: var(--light-green);
   color: var(--dark-green);
   padding: 0.5rem 1rem;
   border-radius: 5px;
   font-size: 0.8rem;
   transition: 0.3s;
+  user-select: none;
 }
 
-.about-container .about-tags span:hover {
+.about-container .about-tags-container span:hover {
   background-color: var(--dark-green);
   color: var(--light-green);
 }
@@ -95,19 +102,30 @@
   stroke: var(--light-green);
 }
 
+/*---------------------------------------------------------------------------------------------------------
+  - ANIMATION
+------------------------------------------------------------------------------------------------------------*/
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 /* ----------------------------------------------------------------------------------------------------------- 
   - MEDIA QUERIES 
   ----------------------------------------------------------------------------------------------------------- */
-
 
 @media (max-width: 968px) {
   .about-container .max-container h2 {
     margin-bottom: 1rem;
   }
 
-  .about-container .about-tags {
+  .about-container .about-tags-container {
     flex-wrap: nowrap;
-    overflow-x: scroll;
     max-width: 400px;
     margin-block: 1rem;
   }
@@ -119,7 +137,7 @@
 }
 
 @media (max-width: 830px) {
-  .about-container .about-tags {
+  .about-container .about-tags-container {
     max-width: 350px;
   }
 }
@@ -133,10 +151,6 @@
     grid-template-columns: 1fr;
   }
 
-  .about-container h1 {
-    
-  }
-
   .about-container img {
     display: none;
   }
@@ -145,7 +159,7 @@
     max-width: 100%;
   }
 
-  .about-container .about-tags {
+  .about-container .about-tags-container {
     max-width: calc(100dvw - 64px);
   }
 

@@ -14,7 +14,7 @@ const Project = ({ nome, description, tags, img, links }: IProject) => {
   const { t } = useTranslation();
   return (
     <div className="project-box">
-      <img src={img} alt="imagem do projeto" />
+      <img src={img} alt="Imagem de demonstração do projeto" />
       <div>
         <h3>
           {nome}
