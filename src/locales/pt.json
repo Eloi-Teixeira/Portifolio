@@ -4,5 +4,11 @@
   "headerAbout": "Sobre",
   "headerProjects": "Projetos",
   "headerContact": "Contato",
-  "headerTranslate": "Traduzir"
+  "headerTranslate": "Traduzir",
+  "IntroTitle": "Desenvolvedor",
+  "AboutTitle": "Sobre",
+  "AboutDescription": "Olá! Me chamo Elói, sou desenvolvedor Full-Stack com foco em <span>React</span> e <span>TypeScript</span>, buscando primeira oportunidade no mercado. Possuo sólida base em desenvolvimento webmoderno e experiência com projetos práticos. Comprometido com aprendizado contínuo e desenvolvimento de código limpo e eficiente.",
+  "DownloadButton": "Baixe meu CV",
+  "ContactTitle": "Contato",
+  "ProjectsTitle": "Projetos"
 }

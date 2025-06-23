@@ -4,5 +4,11 @@
   "headerAbout": "About",
   "headerProjects": "Projects",
   "headerContact": "Contact",
-  "headerTranslate": "Translate"
+  "headerTranslate": "Translate",
+  "IntroTitle": "Developer",
+  "AboutTitle": "About",
+  "AboutDescription": "Hello! My name is Eloi, I am a Full-Stack developer focused on <span>React</span> and <span>TypeScript</span>, looking for my first opportunity in the market. I have a solid foundation in modern web development and experience with practical projects. Committed to continuous learning and developing clean and efficient code.",
+  "DownloadButton": "Download CV",
+  "ContactTitle": "Contact",
+  "ProjectsTitle": "Projects"
 }
