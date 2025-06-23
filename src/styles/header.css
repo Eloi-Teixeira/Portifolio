@@ -61,7 +61,7 @@
 .header-content #menu-lang-btn.active,
 .header-content #menu-lang-btn:hover {
   background-color: var(--light-green);
-}
+} 
 
 .header-content #menu-lang-btn.active svg path,
 .header-content #menu-lang-btn:hover svg path {
@@ -102,24 +102,21 @@
   display: inherit;
   align-items: center;
   gap: 10px;
+  width: 100%;
 }
 
-.header-content .language-container label {
+.header-content .language-container button {
   cursor: pointer;
   padding: 1rem 1.5rem;
   transition: 0.3s;
   width: 100%;
 }
 
-.header-content .language-container label:hover {
+.header-content .language-container button:hover {
   color: var(--dark-green);
   background-color: var(--light-green);
 }
 
-.header-content .language-container input:checked + label {
-  background-color: var(--light-green);
-  color: var(--dark-green);
-}
 
 /*** ------------------------------------------------------------------------------------------------------------
   - MENU MOBILE
