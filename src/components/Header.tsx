@@ -16,6 +16,31 @@ const Header = () => {
     menuContainer?.classList.toggle('show');
   };
 
+  React.useEffect(() => {
+    window.addEventListener('click', (event) => {
+      const target = event.target as HTMLElement;
+      if (
+        !target.closest('.menu-container') &&
+        !target.closest('#menu-mobile-btn') &&
+        !target.closest('#menu-lang-btn')
+      ) {
+        console.log('click');
+
+        const menuBtn = document.getElementById('menu-mobile-btn');
+        const langBtn = document.getElementById('menu-lang-btn');
+        menuBtn?.classList.remove('active');
+        langBtn?.classList.remove('active');
+        const menuContainer = document.querySelector('.menu-container.show');
+        const languageContainer = document.querySelector('.language-container.show');
+        menuContainer?.classList.remove('show');
+        languageContainer?.classList.remove('show');
+      }
+    });
+    return () => {
+      window.removeEventListener('click', () => {});
+    };
+  })
+
   return (
     <header className="header-container">
       <nav className="header-content max-container">

@@ -21,7 +21,8 @@ const Contact = () => {
   const FeedBack = useSubmitMessage({
     type: status,
     displayTime: messageTime,
-    errorMessage: message,
+    errorMessage: message || t('ContactFormErrorGenericMessage'),
+    successMessage: t('ContactFormSuccessMessage'),
   });
 
   const name = useForm('name');
@@ -42,7 +43,7 @@ const Contact = () => {
       messageInput.current.value.length === 0
     ) {
       setStatus('error');
-      setMessage('Preencha todos os campos corretamente');
+      setMessage(t('ContactFormErrorWritingMessage'));
       return;
     }
 
@@ -153,7 +154,7 @@ const Contact = () => {
               {isLoading ? (
                 <>
                   <span>
-                    {t('ContactFormSendBtn')}
+                    {t('ContactFormSendLoading')}
                     <div className="dots">
                       <div></div>
                       <div></div>
